@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers3</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/0a9fd1077e.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  </head>
+
+  <body>
+    <header class="navbar-default" style="border-radius: 0px;">
+      <div class="container clearfix">
+        <nav class="navbar-left">
+          <span class="title">Bookers</span>
+        </nav>
+
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to "Home", user_path(current_user.id), class:"glyphicon glyphicon-home home" %>
+            </li>
+            <li>
+              <a class="glyphicon glyphicon-user users" href="/users">
+                Users
+              </a>
+            </li>
+            <li>
+              <a class="glyphicon glyphicon-book books" href="/post_images">
+                Books
+              </a>
+            </li>
+
+            <li>
+              <a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out">
+                logout
+              </a>
+            </li>
+            <% else %>
+            <li>
+              <a class="glyphicon glyphicon-home home" href="/">
+            Home</a>
+          </li>
+          <li>
+            <a class="glyphicon glyphicon-link about" href="/about"> About</a>
+          </li>
+          <li>
+            <a class="glyphicon glyphicon-edit sign_up" href="/users/sign_up"> sign up</a>
+          </li>
+          <li>
+            <a class="glyphicon glyphicon-log-in sign_in" href="/users/sign_in"> login</a>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <%= render 'users/search' %>
+
+    <%= yield %>
+  </body>
+</html>

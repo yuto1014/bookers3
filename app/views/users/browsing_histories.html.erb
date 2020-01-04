@@ -1,0 +1,14 @@
+<section class="container wear-edit">
+  <div class="row edit-row">
+    <div class="col-md-8 col-sm-offset-2">
+      <h2 class="edit-title">閲覧投稿一覧</h2>
+			<% @browsing_histories.each do |browsing_histories| %>
+  	<% post_image = PostImage.find_by(id: browsing_histories.post_image_id) %>
+            <%= link_to post_image_path(post_image.id) do %>
+              <%= attachment_image_tag post_image, :image, class: "book-img float-left", size: "300x300" %>
+              <p class="float-left"><%= post_image.book_name %></p>
+              <% end %>
+          <% end %>
+    </div>
+  </div>
+</section>

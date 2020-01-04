@@ -1,0 +1,138 @@
+// Place all the styles related to the PostImages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.masonry-block {
+	margin-bottom: 50px;
+	border: 1px solid #EFEFEF;
+	background-color: #C0C0C0;
+}
+.view {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	cursor: default;
+}
+.book-img {
+	width: 70%;
+	margin: 10px auto;
+}
+.block-content {
+	padding: 0 20px;
+}
+.img-circle {
+	border-radius: 50%;
+}
+.pull-left {
+	float: left;
+}
+.profile-thumb {
+	width: 80px;
+	height: 80px;
+	margin-right: 20px;
+}
+.block-title {
+	margin-bottom: 8px;
+	color: #282d33;
+	font-size: 16px;
+	line-height: 1.4;
+	font-weight: bold;
+}
+.inline-meta {
+	margin: 0 0 10px 0;
+	padding: 0;
+	list-style: none;
+}
+.comment-count {
+	margin-left: 5px;
+}
+.post_images_conteiner {
+	background-color: #C0C0C0;
+	padding: 20px;
+}
+.post-item {
+	margin-bottom: 20px;
+	position: relative;
+}
+.post-image {
+	position: relative;
+}
+.post-comment-image {
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+}
+.profile-image {
+	margin-top: 30px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.post-title {
+	margin-top: 30px;
+	font-size: 24px;
+	color: #333333;
+	font-weight: bold;
+}
+.meta-info-cells {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+.fa {
+	margin-right: 5px;
+	color: #999999;
+	font-size: 1em;
+}
+ul.meta-info-cells.v4
+li {
+	display: inline-block;
+	float: left;
+	font-size: 1em;
+	color: #999999;
+	font-weight: bold;
+	font-family: "Roboto", sans-serif;
+}
+.comment-body {
+	padding: 30px 55px;
+	position: relative;
+	margin-bottom: 18px;
+	border: 1px solid #dddddd;
+	border-radius: 2px;
+}
+.comment-avatar {
+	position: absolute;
+	top: 20px;
+	left: -35px;
+	width: 70px;
+	height: 70px;
+	padding: 4px;
+	border: 1px solid #dddddd;
+	border-radius: 70px;
+	background: #fff;
+}
+.comment-author {
+	margin-bottom: 5px;
+}
+.wear-comment {
+	position: relative;
+}
+
+
+
+
+

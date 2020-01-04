@@ -1,0 +1,56 @@
+<div class="flash">
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+
+<section class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>User Info</h2>
+			<div class="user-image">
+				<%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "60x60" %>
+			</div>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>name</th>
+						<th><%= @user.name %></th>
+					</tr>
+					<tr>
+						<th>introduction</th>
+						<th><%= @user.introduction %></th>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<p><%= link_to "", edit_user_path(current_user), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
+				</p>
+			</div>
+
+			<h2>New book</h2>
+			<%= form_for (post_image) do |f| %>
+			<h4>Book  title</h4>
+			<%= f.text_field :book_name, placeholder:"Book title" %>
+			<h4>Book image</h4>
+			<%= f.attachment_field :image %>
+			<h4>Opinion</h4>
+			<%= f.text_field :opinion, placeholder:"comment" %>
+			<%= f.submit "Create Book", class:"btn btn-primary col-xs-12" %>
+			<% end %>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

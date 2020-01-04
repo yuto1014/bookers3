@@ -1,0 +1,77 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.profile-container {
+	width: 50%;
+	height: 150px;
+	margin: 0 auto;
+	background-color: #808080;
+}
+.profile-name {
+	display: inline-block;
+	font-size: 35px;
+	line-height: 100px;
+	margin-left: 80px;
+}
+.pull-left {
+	float: left;
+}
+.profile-img {
+	margin-top: 30px;
+	width: 100px;
+	height: 100px;
+}
+.masonry-block {
+	margin-bottom: 50px;
+	border: 1px solid #C0C0C0;
+	background-color: #C0C0C0
+}
+.block-image {
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.view {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	cursor: default;
+}
+.my-img {
+	width: 70%;
+	margin: 10px auto;
+}
+.th {
+	width: 33%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

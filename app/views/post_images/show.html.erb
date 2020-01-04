@@ -1,0 +1,116 @@
+<%= render 'post_images/list', post_image: @post_images %>
+
+<div class="col-xs-9 post_images_container">
+  <h2>Book Detail</h2>
+  <div class="post-item">
+  	<div class="post-image">
+  		<%= attachment_image_tag @post_image, :image, class:"post-comment-image" %>
+  	</div>
+  	<div class="post-content">
+  		<%= attachment_image_tag @post_image.user, :profile_image,fallback: "no_image.jpg", size: "60x60", class:"profile-image" %>
+  		<h2 class="post-title">
+  			<%= @post_image.book_name %>
+  		</h2>
+  		<ul class="meta-info-cells v4 float-wrapper clearfix">
+  			<li>
+  				<i class="fa fa-user"></i>
+  				By<%= link_to user_path(@user) do %>
+  				<%= @post_image.user.name %>
+  				<% end %>
+  				<i class="fa fa-calender"></i>
+  				<%= @post_image.created_at.strftime('%Y/%m/%d') %>
+  				<% if current_user.already_favorited?(@post_image) %>
+  				<%= link_to post_image_favorites_path(@post_image), method: :delete do %>
+  				<i class="fa fa-heart" aria-hidden="true" style="color: :red;"></i>
+  				<%= @post_image.favorites.count %>
+  				いいね
+  				<% end %>
+  				<% else %>
+  				<%= link_to post_image_favorites_path(@post_image), method: :post do %>
+  				<i class="fa fa-heart" aria-hidden="true" style="color: :red;"></i>
+  				<%= @post_image.favorites.count %>
+  				いいね
+  				<% end %>
+  				<% end %>
+  				<i class="fa fa-comment"></i>
+  				<%= @post_image.post_comments.count %>
+  				<% if @post_image.user == current_user %>
+  				<%= link_to "edit", edit_post_image_path(@post_image) %>
+  				<%= link_to "delete", post_image_path(@post_image), method: :delete %>
+  				<% end %>
+  			</li>
+  		</ul>
+
+      <div id="post_image_favorite">
+             <%= render 'favorites/favorite', post_image: @post_image %>
+          </div>
+
+  		<div class="post-content-innner mt-20">
+  			<p><%= @post_image.opinion %></p>
+  		</div>
+  	</div>
+  	<hr>
+  	<div class="comment-list bt style-2" id="comments">
+  		<div class="float-wrapper">
+  			<h2 class="comment-count">
+  				<%= @post_image.post_comments.count %>
+  				件コメント
+  			</h2>
+  		</div>
+  		<ol>
+  			<% @post_image.post_comments.each do |post_comment| %>
+  			<li class="comment">
+  				<div class="comment-body bb">
+  					<div class="comment-avatar">
+  						<%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class:"post-comment-image" %>
+  					<div class="comment-text">
+  						<div class="comment-author clearfix">
+  						<%= link_to user_path(post_comment.user.id) do %>
+  				        <%= post_comment.user.name %>
+  				        <% end %>
+  				        <span class="comment-mata">
+  				        	<span class="comment-date">
+  				        		<%= @post_image.created_at.strftime('%Y/%m/%d') %>
+  				        	</span>
+  				        </span>
+  				    </div>
+  				    <div class="comment-entry">
+  				    	<%= post_comment.comment %>
+  				    </div>
+              
+  				</div>
+  			</div>
+  		</li>
+  		<% end %>
+  	</ol>
+  </div>
+  <hr>
+  <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+  	<h3 class="section-title left">
+  		<span>Comment</span>
+  	</h3>
+  </div>
+  <%= form_for [@post_image, @post_comment] do |f| %>
+  <div class="row">
+  	<div class="col-sm-12">
+  		<%= f.text_field :comment, class: "form-control", placeholder: "コメントをここに" %>
+  	</div>
+  </div>
+  <%= f.submit "submit", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+  <% end %>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

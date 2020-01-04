@@ -1,0 +1,99 @@
+<div class="flash">
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+
+<section class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>User Info</h2>
+			<div class="user-image">
+				<%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "60x60" %>
+			</div>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>name</th>
+						<th><%= @user.name %></th>
+					</tr>
+					<tr>
+						<th>introduction</th>
+						<th><%= @user.introduction %></th>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<p><%= link_to "", edit_user_path(current_user), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
+				</p>
+			</div>
+
+			<h2>New book</h2>
+			<%= form_for (@post_image) do |f| %>
+			<h4>Book  title</h4>
+			<%= f.text_field :book_name, placeholder:"Book title" %>
+			<h4>Book image</h4>
+			<%= f.attachment_field :image %>
+			<h4>Opinion</h4>
+			<%= f.text_field :opinion, placeholder:"comment" %>
+			<%= f.submit "Create Book", class:"btn btn-primary col-xs-12" %>
+			<% end %>
+		</div>
+
+<div class="col-xs-9">
+  <h2>My Page</h2>
+  <div class="profile-container">
+  	<h3 class="profile-name"><%= @user.name %></h3>
+  	<%= attachment_image_tag @user, :profile_image, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+  	<% if @user.id == current_user.id %>
+  	<p><%= link_to "edit profile", edit_user_path(@user), class:"pull-right" %></p>
+  	<% end %>
+
+    <%= render 'users/follow_form' %>
+    <%= render 'users/stats' %>
+  </div>
+
+  <ul>
+  <li class="mypage-nav-list-item">
+            <%= link_to "履歴一覧", "/users/#{@user.id}/browsing_histories" %>
+          </li>
+        </ul>
+
+  <div  class="masonry-wrapper-cols">
+  	<% @post_images.each do |post_image| %>
+  	<div class="masonry-block">
+  		<div class="block block-image">
+  			<div class="block-image">
+  				<div class="view view-first">
+  					<%= link_to post_image_path(post_image.id) do %>
+  					<%= attachment_image_tag post_image, :image, class: "my-img" %>
+  					<% end %>
+  				</div>
+  			</div>
+  			<div class="block-content">
+  				<%= attachment_image_tag post_image.user, :profile_image, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+  				<h3 class="block-title">
+  					<%= link_to post_image_path(post_image.id) do %>
+  					<i class="fa fa-map-marker"></i>
+  					<%= post_image.book_name %>
+  					<% end %>
+  				</h3>
+  				<p><%= post_image.opinion %></p>
+  				<ul class="inline-meta">
+  					<li>By
+  						<%= post_image.user.name %>
+  						<%= link_to "#{post_image.post_comments.count}コメント", post_image_path(post_image.id), class: "comment-count" %>
+  					</li>
+  				</ul>
+  			</div>
+  		</div>
+  	</div>
+  	<% end %>
+  	<%= paginate @post_images, class: "paginate" %>
+  </div>
+</div>
+
+
+
+
+
+

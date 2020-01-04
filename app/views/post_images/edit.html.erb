@@ -1,0 +1,25 @@
+	<div class="container">
+		<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h1>Editing Book</h1>
+<%= form_for(@post_image) do |f| %>
+<div class="field row">
+<h4 class="title">Title</h4>
+<%= f.text_field :book_name %>
+</div>
+<div class="field row">
+<h4 class="title">Opinion</h4>
+<%= f.text_field :opinion %>
+</div>
+<div class="action row">
+<input type="submit" name="commit" value="Update Book" class="btn btn-primary col-xs-12" data-disable-with="Update Book">
+</div>
+<% end %>
+
+<%= link_to "Show", post_image_path(@post_image) %>
+|
+<%= link_to "Back", post_images_path %>
+</div>
+</div>
+</div>
+</div>
