@@ -23,7 +23,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: bookers3
   adapter: mysql2
   encoding: utf8mb4
   charset: utf8mb4
